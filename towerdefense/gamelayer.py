@@ -99,10 +99,7 @@ class GameLayer(Layer):
         # check each turret to see if it has a tank in range
         for turret in self.turrets:
             # if nothing is colliding, next() will return None
-            obj = None
-            targets = self.collman_enemies.iter_colliding(turret)
-            #while obj = next(targets, None):
-            #obj = next(self.collman_enemies.iter_colliding(turret), None)
+            obj = next(self.collman_enemies.iter_colliding(turret), None)
             # pass tank (or None) to turret to become its new target
             turret.collide(obj)
 
