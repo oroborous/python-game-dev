@@ -67,9 +67,6 @@ class Enemy(Actor):
         # do the action chain that came from the scenario
         self.do(actions)
 
-        self.health_label = Label("100%")
-        self.add(self.health_label)
-
     # called when a tank is destroyed
     def explode(self):
         # add an Explosion sprite to the game at tank's current position
@@ -90,8 +87,6 @@ class Enemy(Actor):
             self.destroyed_by_player = True
             # destroy itself
             self.explode()
-
-        self.health_label.element.text = "{}%".format(self.health)
 
 
 class Bunker(Actor):
@@ -124,12 +119,14 @@ class Shoot(Sprite):
                 CallFunc(self.kill) +
                 CallFunc(enemy.hit))
 
+
 # turret slot images are part of the background image, so they
 # are not sprites
 class TurretSlot:
     def __init__(self, pos, side):
         # use the "splat" operator to unpack position vector into x and y
         self.cshape = AARectShape(Vector2(*pos), side * 0.5, side * 0.5)
+
 
 class Turret(Actor):
     def __init__(self, x, y):
@@ -181,5 +178,3 @@ class Turret(Actor):
             angle = -math.atan2(y, x)
             # convert radians to degrees
             self.rotation = math.degrees(angle)
-
-
