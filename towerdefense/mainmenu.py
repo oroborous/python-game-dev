@@ -10,7 +10,7 @@ import pyglet.app
 
 class MainMenu(Menu):
     def __init__(self):
-        super(MainMenu, self).__init__("Tower Defense")
+        super().__init__("Tower Defense")
         # set the font for the main menu title
         self.font_title["font_name"] = "Oswald"
         # set the font for the menu items (regular and selected)

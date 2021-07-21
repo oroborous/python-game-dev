@@ -10,7 +10,7 @@ from pyglet.window import key
 class Actor(Sprite):
     def __init__(self, x, y, color):
         # call the Sprite constructor with initial params
-        super(Actor, self).__init__("img/ball.png", color=color)
+        super().__init__("img/ball.png", color=color)
 
         # create a vector that defines the sprite's position
         # relative to the screen's origin (bottom left)
@@ -26,7 +26,7 @@ class Actor(Sprite):
 
 class MainLayer(Layer):
     def __init__(self):
-        super(MainLayer, self).__init__()
+        super().__init__()
 
         # create an Actor to represent the player
         # positioned at (x=320, y=240) with a blue overlay

@@ -20,7 +20,7 @@ class Actor(Sprite):
     def __init__(self, image, x, y):
         # like the Actor class in our other game, initialize
         # with image and starting coordinates
-        super(Actor, self).__init__(image)
+        super().__init__(image)
         pos = Vector2(x, y)
         self.position = pos
 
@@ -49,7 +49,7 @@ class Hit(IntervalAction):
 
 class Explosion(Sprite):
     def __init__(self, pos):
-        super(Explosion, self).__init__(explosion_img, pos)
+        super().__init__(explosion_img, pos)
         # the do() method is how sprites perform actions
         # wait one second, then destroy yourself
         self.do(Delay(1) + CallFunc(self.kill))
@@ -57,7 +57,7 @@ class Explosion(Sprite):
 
 class Enemy(Actor):
     def __init__(self, x, y, actions):
-        super(Enemy, self).__init__("tank.png", x, y)
+        super().__init__("tank.png", x, y)
         # starts with 100 health
         self.health = 100
         # worth 20 points when destroyed
@@ -91,7 +91,7 @@ class Enemy(Actor):
 
 class Bunker(Actor):
     def __init__(self, x, y):
-        super(Bunker, self).__init__("bunker.png", x, y)
+        super().__init__("bunker.png", x, y)
         # the bunker has 100 health to start
         self.health = 100
 
@@ -110,7 +110,7 @@ class Bunker(Actor):
 # turret missiles aren't Actors because they don't collide
 class Shoot(Sprite):
     def __init__(self, pos, travel_path, enemy):
-        super(Shoot, self).__init__("shoot.png", position=pos)
+        super().__init__("shoot.png", position=pos)
         # perform a chain of actions:
         # move toward enemy very quickly,
         # remove itself from game,
@@ -130,7 +130,7 @@ class TurretSlot:
 
 class Turret(Actor):
     def __init__(self, x, y):
-        super(Turret, self).__init__("turret.png", x, y)
+        super().__init__("turret.png", x, y)
         # contains a second sprite - the white range indicator circle
         self.add(Sprite("range.png", opacity=50, scale=5))
         # the collider is the same size as the range circle, which has

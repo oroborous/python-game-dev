@@ -23,7 +23,7 @@ class GameLayer(Layer):
     is_event_handler = True
 
     def __init__(self, hud, scenario):
-        super(GameLayer, self).__init__()
+        super().__init__()
         self.hud = hud
         self.scenario = scenario
 
@@ -136,7 +136,7 @@ class GameLayer(Layer):
 
 class HUD(Layer):
     def __init__(self):
-        super(HUD, self).__init__()
+        super().__init__()
         # get dimensions of window
         w, h = director.get_window_size()
         # create labels for score and scrap

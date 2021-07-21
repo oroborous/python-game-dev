@@ -34,7 +34,7 @@ TYPES = {
 class Actor(Sprite):
     def __init__(self, image, x, y):
         # call sprite constructor
-        super(Actor, self).__init__(image)
+        super().__init__(image)
 
         # initialize position vector
         pos = Vector2(x, y)
@@ -66,7 +66,7 @@ class Actor(Sprite):
 class Alien(Actor):
     def __init__(self, img, x, y, points, column=None):
         # call Actor constructor with image and coordinates
-        super(Alien, self).__init__(img, x, y)
+        super().__init__(img, x, y)
         # different aliens are worth different points
         self.points = points
         # aliens know which AlienColumn they belong to
@@ -74,7 +74,7 @@ class Alien(Actor):
 
     def on_exit(self):
         # call the original on_exit method in CocosNode
-        super(Alien, self).on_exit()
+        super().on_exit()
 
         # if an alien's column is set, remove it from the column
         if self.column:
@@ -210,7 +210,7 @@ class Swarm:
 class PlayerCannon(Actor):
     def __init__(self, x, y):
         # call Actor constructor
-        super(PlayerCannon, self).__init__("img/cannon.png", x, y)
+        super().__init__("img/cannon.png", x, y)
 
         # use a vector for speed to support the move() method
         self.speed = Vector2(200, 0)
@@ -253,7 +253,7 @@ class PlayerShoot(Actor):
     ACTIVE_SHOOT = None
 
     def __init__(self, x, y):
-        super(PlayerShoot, self).__init__("img/missile.png", x, y)
+        super().__init__("img/missile.png", x, y)
         # only moves vertically, quite fast
         self.speed = Vector2(0, 400)
         # when a shoot is constructed, it is the active shoot
@@ -272,7 +272,7 @@ class PlayerShoot(Actor):
     # called when PlayerShoot is destroyed with .kill() in collide()
     def on_exit(self):
         # call original on_exit
-        super(PlayerShoot, self).on_exit()
+        super().on_exit()
         # set the active shoot to None so the player can fire again
         PlayerShoot.ACTIVE_SHOOT = None
 
@@ -283,7 +283,7 @@ class PlayerShoot(Actor):
 
 class AlienShoot(Actor):
     def __init__(self, x, y):
-        super(AlienShoot, self).__init__("img/shoot.png", x, y)
+        super().__init__("img/shoot.png", x, y)
         # only moves down (negative y)
         self.speed = Vector2(0, -400)
 
@@ -294,7 +294,7 @@ class AlienShoot(Actor):
 # holds the text labels that display the score, lives, game over
 class HUD(Layer):
     def __init__(self):
-        super(HUD, self).__init__()
+        super().__init__()
 
         # get the screen size and unpack the tuple into two variables
         w, h = director.get_window_size()
@@ -336,7 +336,7 @@ class HUD(Layer):
 
 class GameLayer(Layer):
     def __init__(self, hud):
-        super(GameLayer, self).__init__()
+        super().__init__()
         # store reference to the hud so text labels can be updated
         self.hud = hud
 
