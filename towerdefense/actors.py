@@ -1,11 +1,9 @@
 from cocos.sprite import Sprite
 from cocos.euclid import Vector2
-from cocos.collision_model import CollisionManager, CircleShape, AARectShape
+from cocos.collision_model import CircleShape, AARectShape
 from cocos.actions import IntervalAction, Delay, CallFunc, MoveBy
-from cocos.text import Label
-
-import math
 from pyglet.image import ImageGrid, Animation, load
+import math
 
 # load the sprite sheet image
 raw = load("assets/explosion.png")
