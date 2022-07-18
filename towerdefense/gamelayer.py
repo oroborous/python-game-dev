@@ -130,7 +130,7 @@ class GameLayer(Layer):
         elif isinstance(obj, actors.Enemy) and obj.destroyed_by_player:
             self.score += obj.points
             self.scrap += 5
-        super(GameLayer, self).remove(obj)
+        super().remove(obj)
 
 
 
