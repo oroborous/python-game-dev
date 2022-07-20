@@ -62,11 +62,13 @@ class Actor(Sprite):
         pass  # do nothing
 
 
-# all of the aliens are Actors
+# all aliens are Actors
 class Alien(Actor):
-    def __init__(self, img, x, y, points, column=None):
+    def __init__(self, x, y, alien_type, column=None):
+        # get the tuple from the dictionary and unpack it
+        animation, points = TYPES[alien_type]
         # call Actor constructor with image and coordinates
-        super().__init__(img, x, y)
+        super().__init__(animation, x, y)
         # different aliens are worth different points
         self.points = points
         # aliens know which AlienColumn they belong to
@@ -79,13 +81,6 @@ class Alien(Actor):
         # if an alien's column is set, remove it from the column
         if self.column:
             self.column.remove(self)
-
-    @staticmethod
-    def from_type(x, y, alien_type, column):
-        # get the tuple from the dictionary and unpack it
-        animation, points = TYPES[alien_type]
-        # create and return the requested Alien
-        return Alien(animation, x, y, points, column)
 
 
 # a column creates and contains its Aliens
@@ -102,13 +97,13 @@ class AlienColumn:
         #         # same x, increasing y
         #         # the string to use as dictionary index
         #         # and reference to the column itself
-        #         Alien.from_type(x, y + i * 60, alien_type, self)
+        #         Alien(x, y + i * 60, alien_type, self)
         #     )
 
         # a list comprehension is more Pythonic
         # translate one list into another list
         self.aliens = [
-            Alien.from_type(x, y + i * 60, alien_type, self)
+            Alien(x, y + i * 60, alien_type, self)
             for i, alien_type in alien_types
         ]
 
@@ -145,8 +140,6 @@ class AlienColumn:
         else:
             # not firing this frame
             return None
-
-
 
 
 # the Swarm contains all AlienColumns
