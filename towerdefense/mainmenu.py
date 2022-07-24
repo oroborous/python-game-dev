@@ -1,5 +1,5 @@
 from towerdefense.gamelayer import new_game
-from cocos.menu import Menu, MenuItem, ToggleMenuItem
+from cocos.menu import Menu, MenuItem
 from cocos.scene import Scene
 from cocos.layer import ColorLayer
 from cocos.actions import ScaleTo
@@ -25,10 +25,6 @@ class MainMenu(Menu):
         items = list()
         # add menu item to start new game by calling function on_new_game
         items.append(MenuItem("New Game", self.on_new_game))
-        # add menu item to show/hide framerate, initialized to current
-        # setting of the director, which will call function show_fps
-        # passing it the True/False state of the toggle
-        items.append(ToggleMenuItem("Show FPS: ", self.show_fps, director.show_FPS))
         # add menu item to exit the game
         items.append(MenuItem("Quit", pyglet.app.exit))
 
@@ -41,15 +37,13 @@ class MainMenu(Menu):
         # with a 2-second wipe effect transition
         director.push(FadeTRTransition(new_game(), duration=2))
 
-    def show_fps(self, value):
-        director.show_FPS = value
 
 def new_menu():
     # create a scene for the menu
     scene = Scene()
     # create a sandy-colored layer
     color_layer = ColorLayer(205, 133, 63, 255)
-    
+
     # add MainMenu to scene
     scene.add(MainMenu(), z=1)
     # add color layer behind it
