@@ -111,9 +111,6 @@ class AlienColumn:
     def remove(self, alien):
         self.aliens.remove(alien)
 
-    def increase_difficulty(self):
-        pass
-
     # method to ask the column if it's too close to the edge of
     # the screen and needs to change direction
     def should_turn(self, direction):
@@ -163,9 +160,6 @@ class Swarm:
         # delta_times until it reaches 1
         self.elapsed = 0.0
         self.period = 1.0
-
-    def increase_difficulty(self):
-        pass
 
     # return True/False whether any column is too close to edge of screen
     def side_reached(self):
@@ -381,13 +375,6 @@ class GameLayer(Layer):
 
         # update the game score label using the GameLayer's variable
         self.hud.update_score(self.score)
-
-        self.swarm.increase_difficulty()
-
-        for column in self.swarm.columns:
-            column.increase_difficulty()
-
-
 
     # called once per frame
     def game_loop(self, delta_time):
