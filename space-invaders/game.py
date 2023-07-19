@@ -10,9 +10,9 @@ from pyglet.image import load as iload, ImageGrid, Animation
 from pyglet.media import load as mload
 from random import random
 
-shoot_sfx = mload("sfx/shoot.wav", streaming=False)
-kill_sfx = mload("sfx/invaderkilled.wav", streaming=False)
-die_sfx = mload("sfx/explosion.wav", streaming=False)
+shoot_sfx = mload("sfx/shoot.mp3", streaming=False)
+kill_sfx = mload("sfx/invaderkilled.mp3", streaming=False)
+die_sfx = mload("sfx/explosion.mp3", streaming=False)
 
 
 # utility function to create an animation from a sprite sheet
@@ -455,7 +455,7 @@ class GameLayer(Layer):
 
 if __name__ == "__main__":
     # load sound media files
-    song = mload("sfx/level1.ogg")
+    song = mload("sfx/level1.mp3")
     player = song.play()
     player.loop = True
 
